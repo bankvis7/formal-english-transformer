@@ -119,8 +119,6 @@ Three-step cleaning applied to both sources:
 │   └── processed/
 │       ├── seed_pairs.csv          # 91 cleaned pairs from BigSalmon2
 │       └── informal_formal.csv     # 365 total pairs (seed + synthetic)
-├── formal_transformer_checkpoints/ # Saved model checkpoints
-├── logs/                           # TensorBoard training logs
 ├── LoadDataset.ipynb               # Step 1: Download & clean seed data
 ├── GenerateData.ipynb              # Step 2: Expand dataset via Groq API
 └── TrainingProcessedData.ipynb     # Step 3: Tokenize, train, and evaluate
@@ -194,12 +192,12 @@ Validation loss decreased steadily without signs of overfitting. Small gap betwe
 
 | Informal Input | Model Output | Quality |
 |----------------|--------------|---------|
-| Tbh, I dunno if this plan is gonna work out. | I am not sure if this plan is going to work out. | ✓ Good |
-| We're way behind schedule and stuff's getting messy. | We are currently experiencing a significant delay in scheduling and the situation is experiencing considerable difficulty. | ✓ Good (verbose) |
-| Just got a sick new phone, it's lit. | I have recently purchased a new phone that has been upgraded. | ⚠ Meaning shift |
-| Gonna skip the meeting, can't deal with it rn. | Gonna skip the meeting, and I am unable to deal with it. | ✗ Kept "Gonna" |
-| That presentation was lowkey amazing, props to the team. | That presentation was a pleasure, and I highly recommend it to the team. | ⚠ Meaning shift |
-| She's super smart and totally crushed the interview. | She is extremely intelligent and has completely crushed the interview. | ⚠ Kept "crushed" |
+| Tbh, I dunno if this plan is gonna work out. | I am not sure if this plan is going to work out. | Good |
+| We're way behind schedule and stuff's getting messy. | We are currently experiencing a significant delay in scheduling and the situation is experiencing considerable difficulty. | Good (verbose) |
+| Just got a sick new phone, it's lit. | I have recently purchased a new phone that has been upgraded. | Meaning shift |
+| Gonna skip the meeting, can't deal with it rn. | Gonna skip the meeting, and I am unable to deal with it. | Kept "Gonna" |
+| That presentation was lowkey amazing, props to the team. | That presentation was a pleasure, and I highly recommend it to the team. | Meaning shift |
+| She's super smart and totally crushed the interview. | She is extremely intelligent and has completely crushed the interview. | Kept "crushed" |
 
 **What worked well:**
 - Expands contractions (`we're` → `we are`, `can't` → `unable to`)
